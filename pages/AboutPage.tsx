@@ -9,7 +9,7 @@ const AboutPage: React.FC = () => {
   const values = [
     {
       title: "Unmatched Craftsmanship",
-      description: "We believe that true luxury lies in the details. Our team of 30+ skilled tradespeople brings precision to every corner of your project.",
+      description: "We take pride in every detail, ensuring every project is built to the highest standards of quality and durability.",
       icon: <Award className="text-zinc-900" size={24} />
     },
     {
@@ -24,7 +24,7 @@ const AboutPage: React.FC = () => {
     },
     {
       title: "Collaborative Spirit",
-      description: "We work closely with architects, designers, and homeowners to ensure the final result is a perfect reflection of the vision.",
+      description: "Your vision is our priority. We work closely with clients, architects, and designers to bring unique ideas to life.",
       icon: <Users className="text-zinc-900" size={24} />
     }
   ];
@@ -54,7 +54,7 @@ const AboutPage: React.FC = () => {
               Building legacies, <br /><span className="text-zinc-400">one detail at a time.</span>
             </h1>
             <p className="text-xl md:text-2xl font-manrope text-zinc-400 leading-relaxed max-w-2xl">
-              DLX Renovations is a premier multifaceted builder specializing in luxury home improvements, commercial rehabs, and custom residential construction.
+              Welcome to DELUXE. We are a premier construction company dedicated to transforming visions into reality. With a passion for excellence and a commitment to quality, we specialize in residential and commercial remodeling, flooring, drywall, and custom renovations.
             </p>
           </motion.div>
         </div>

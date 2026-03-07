@@ -9,7 +9,7 @@ const ContactPage: React.FC = () => {
       {/* Intro Section */}
       <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="max-w-3xl"
@@ -34,6 +34,7 @@ const ContactPage: React.FC = () => {
             <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-zinc-400 mb-6">Inquiries</h4>
             <p className="text-lg font-manrope text-zinc-900">hello@dlxrenovations.com</p>
             <p className="text-lg font-manrope text-zinc-900">+1 407-255-4040</p>
+            <p className="text-lg font-manrope text-zinc-900">+1 407-400-6858</p>
           </div>
           <div className="p-10 bg-white border border-zinc-100">
             <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-zinc-400 mb-6">Office Hours</h4>

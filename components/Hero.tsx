@@ -25,7 +25,7 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="text-5xl md:text-8xl font-manrope font-medium text-white leading-[1.05] mb-8 tracking-tight"
           >
-            Elite <span className="text-zinc-500 italic">Craftsmanship</span> Since 2009.
+            Crafting <span className="text-zinc-500 italic">Legacy</span> Through Luxury.
           </motion.h1>
 
           <motion.p
@@ -34,7 +34,7 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-lg md:text-xl font-manrope text-zinc-400 mb-10 max-w-lg leading-relaxed"
           >
-            Deluxe Renovations transforms properties across Florida into high-end architectural masterpieces with 15 years of precision.
+            DLX Renovations transforms high-end properties into architectural masterpieces with 15 years of precision and expertise.
           </motion.p>
 
           <motion.div
@@ -70,14 +70,20 @@ const Hero: React.FC = () => {
             transition={{ delay: 1, duration: 0.8 }}
             className="absolute bottom-6 right-6 p-8 bg-zinc-900/90 backdrop-blur-md border border-white/10 max-w-xs text-white"
           >
-            <div className="flex gap-1 mb-3 text-zinc-400 text-xs font-bold uppercase tracking-widest">
-              Verified Excellence
+            <div className="flex items-center justify-between mb-3">
+              <div className="text-zinc-400 text-xs font-bold uppercase tracking-widest">
+                Verified Excellence
+              </div>
+              <img src="/images/submark.png" alt="Deluxe Seal" className="h-8 w-auto opacity-50 contrast-125" />
             </div>
-            <p className="text-sm font-manrope leading-relaxed opacity-80">
+            <p className="text-sm font-manrope leading-relaxed opacity-80 mb-4">
               "Every detail was handled with precision. DLX turned our vision into an elite living experience."
             </p>
-            <div className="mt-4 font-manrope text-xs font-bold uppercase tracking-tighter">
-              — Premium Client, Orlando
+            <div className="flex items-center gap-4">
+              <img src="/images/deluxe-icon.png" alt="Icon" className="h-6 w-auto grayscale" />
+              <div className="font-manrope text-xs font-bold uppercase tracking-tighter">
+                — PREMIUM CLIENT, ORLANDO
+              </div>
             </div>
           </motion.div>
         </motion.div>

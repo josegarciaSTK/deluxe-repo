@@ -22,7 +22,7 @@ const Portfolio: React.FC = () => {
 
         <div className="space-y-32">
           {PROJECTS.map((project, idx) => (
-            <motion.div 
+            <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -31,8 +31,9 @@ const Portfolio: React.FC = () => {
             >
               <div className="lg:w-1/2">
                 <div className="aspect-[16/10] rounded-3xl overflow-hidden shadow-2xl">
-                  <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 hover:scale-110" />
+                  <img src={project.image} alt={project.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 hover:scale-110" />
                 </div>
+
               </div>
               <div className="lg:w-1/2 space-y-8">
                 <div className="space-y-4">
@@ -45,7 +46,7 @@ const Portfolio: React.FC = () => {
                     {project.description}
                   </p>
                 </div>
-                
+
                 <div className="p-8 bg-zinc-50 rounded-2xl relative border border-zinc-100 shadow-sm">
                   <Quote className="text-zinc-300 absolute top-4 left-4" size={40} />
                   <p className="relative z-10 text-lg font-manrope italic text-zinc-600 mb-6 pl-6">

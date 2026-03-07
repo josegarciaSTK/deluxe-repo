@@ -8,9 +8,7 @@ const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex items-center gap-12">
-             <div className="w-24 h-8 bg-contain bg-no-repeat bg-center" 
-               style={{ backgroundImage: `url(https://framerusercontent.com/images/ZpxPWv13jp7ErUP2AHaGowPkec.png)`, filter: 'invert(1)' }}>
-            </div>
+            <img src="/images/deluxe-logo-black.png" alt="Deluxe Renovations" className="h-8 w-auto" />
             <nav className="hidden sm:flex gap-8">
               <Link to="/about" className="text-zinc-500 hover:text-zinc-900 transition-colors">About</Link>
               <Link to="/services" className="text-zinc-500 hover:text-zinc-900 transition-colors">Services</Link>

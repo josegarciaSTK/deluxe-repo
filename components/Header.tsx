@@ -27,9 +27,11 @@ const Header: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="flex items-center">
-          <div className="w-20 h-7 bg-contain bg-no-repeat bg-center" 
-               style={{ backgroundImage: `url(https://framerusercontent.com/images/ZpxPWv13jp7ErUP2AHaGowPkec.png)` }}>
-          </div>
+          <img
+            src={scrolled ? '/images/deluxe-logo-black.png' : '/images/deluxe-logo-white.svg'}
+            alt="Deluxe Renovations"
+            className="h-8 w-auto transition-all duration-300"
+          />
         </Link>
 
         {/* Desktop Navigation */}
@@ -38,9 +40,8 @@ const Header: React.FC = () => {
             <Link
               key={link.name}
               to={link.path}
-              className={`text-xs font-semibold uppercase tracking-widest hover:opacity-70 transition-opacity ${
-                scrolled ? 'text-zinc-800' : 'text-zinc-100'
-              } ${location.pathname === link.path ? 'border-b-2 border-current' : ''}`}
+              className={`text-xs font-semibold uppercase tracking-widest hover:opacity-70 transition-opacity ${scrolled ? 'text-zinc-800' : 'text-zinc-100'
+                } ${location.pathname === link.path ? 'border-b-2 border-current' : ''}`}
             >
               {link.name}
             </Link>
@@ -49,9 +50,8 @@ const Header: React.FC = () => {
 
         {/* Action Button */}
         <div className="hidden md:block">
-          <Link to="/contact" className={`px-6 py-2 rounded-full text-xs font-medium uppercase tracking-widest transition-all ${
-            scrolled ? 'bg-zinc-900 text-white hover:bg-zinc-700' : 'bg-white text-zinc-900 hover:bg-zinc-200'
-          }`}>
+          <Link to="/contact" className={`px-6 py-2 rounded-full text-xs font-medium uppercase tracking-widest transition-all ${scrolled ? 'bg-zinc-900 text-white hover:bg-zinc-700' : 'bg-white text-zinc-900 hover:bg-zinc-200'
+            }`}>
             Contact
           </Link>
         </div>
