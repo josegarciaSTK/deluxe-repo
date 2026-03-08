@@ -7,7 +7,11 @@ const Contact: React.FC = () => {
     <section id="contact" className="py-24 px-6">
       <div className="max-w-7xl mx-auto bg-[#152218] rounded-[2rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row">
         {/* Left Side: Info */}
-        <div className="lg:w-1/2 p-12 lg:p-20 text-white flex flex-col justify-between">
+        <div className="lg:w-1/2 p-12 lg:p-20 text-white flex flex-col justify-between relative overflow-hidden">
+          {/* Eagle Watermark */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <img src="/images/deluxe-submark-white.svg" alt="" className="h-[60%] w-auto opacity-[0.04]" aria-hidden="true" />
+          </div>
           <div className="space-y-12">
             <div>
               <span className="inline-block px-4 py-2 rounded-full bg-white/10 text-white text-xs font-manrope font-bold uppercase tracking-wider mb-6">

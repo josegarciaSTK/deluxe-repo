@@ -6,14 +6,14 @@ import { STATS } from '../constants';
 const About: React.FC = () => {
   // A larger set of images for the horizontal scroll
   const galleryImages = [
-    'https://images.unsplash.com/photo-1556912177-c54030639a60?auto=format&fit=crop&q=80&w=800',
-    'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800',
-    'https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&q=80&w=800',
-    'https://images.unsplash.com/photo-1600585154526-990dcea464dd?auto=format&fit=crop&q=80&w=800',
-    'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=800',
-    'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&q=80&w=800',
-    'https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&q=80&w=800',
-    'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=800',
+    '/images/kitchen-after-1.jpg',
+    '/images/shower-after-2.jpg',
+    '/images/flooring-after-2.jpg',
+    '/images/renovation-after.jpg',
+    '/images/fixflip-after-1.jpg',
+    '/images/kitchen-luxe.jpg',
+    '/images/backsplash.jpg',
+    '/images/kitchen-after-2.jpg',
   ];
 
   return (
@@ -30,7 +30,7 @@ const About: React.FC = () => {
           </div>
           <div className="lg:w-2/3">
             <p className="text-xl md:text-2xl font-manrope text-zinc-600 leading-relaxed">
-              Welcome to <span className="font-bold text-zinc-900">DELUXE</span>, your multifaceted construction experts, dedicated to transforming properties with precision and care. With 15 years of experience in building luxury multi-family communities, commercial retail, and custom homes, we take pride in delivering top-quality craftsmanship and a seamless customer experience.
+              With over 11 years of experience, <span className="font-bold text-zinc-900">DELUXE</span> has delivered luxury multi-family communities, commercial spaces, custom homes, and high-end renovations. We bring precision, elegance, and exceptional craftsmanship to every project — transforming spaces with quality, efficiency, and meticulous attention to detail.
             </p>
           </div>
         </div>
@@ -39,26 +39,26 @@ const About: React.FC = () => {
       {/* Infinite Horizontal Scrolling Gallery - No rounded corners, smaller, seamless */}
       <div className="relative mb-24 w-full">
         <div className="flex">
-          <motion.div 
+          <motion.div
             className="flex"
             animate={{ x: ["0%", "-50%"] }}
-            transition={{ 
-              duration: 25, 
-              repeat: Infinity, 
-              ease: "linear" 
+            transition={{
+              duration: 25,
+              repeat: Infinity,
+              ease: "linear"
             }}
           >
             {/* First Set */}
             <div className="flex gap-4 pr-4">
               {galleryImages.map((src, idx) => (
-                <div 
-                  key={`set1-${idx}`} 
+                <div
+                  key={`set1-${idx}`}
                   className="w-[180px] md:w-[240px] aspect-[4/3] flex-shrink-0 overflow-hidden"
                 >
-                  <img 
-                    src={src} 
-                    alt={`Renovation detail ${idx}`} 
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500 rounded-none" 
+                  <img
+                    src={src}
+                    alt={`Renovation detail ${idx}`}
+                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500 rounded-none"
                   />
                 </div>
               ))}
@@ -66,14 +66,14 @@ const About: React.FC = () => {
             {/* Second Set (Duplicate for seamless loop) */}
             <div className="flex gap-4 pr-4">
               {galleryImages.map((src, idx) => (
-                <div 
-                  key={`set2-${idx}`} 
+                <div
+                  key={`set2-${idx}`}
                   className="w-[180px] md:w-[240px] aspect-[4/3] flex-shrink-0 overflow-hidden"
                 >
-                  <img 
-                    src={src} 
-                    alt={`Renovation detail duplicate ${idx}`} 
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500 rounded-none" 
+                  <img
+                    src={src}
+                    alt={`Renovation detail duplicate ${idx}`}
+                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500 rounded-none"
                   />
                 </div>
               ))}
@@ -89,7 +89,7 @@ const About: React.FC = () => {
         {/* Stats Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 text-center lg:text-left">
           {STATS.map((stat, idx) => (
-            <motion.div 
+            <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

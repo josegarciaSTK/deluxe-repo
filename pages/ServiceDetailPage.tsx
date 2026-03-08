@@ -64,6 +64,7 @@ const ServiceDetailPage: React.FC = () => {
                 {service.id === 'kitchen-bathroom' && 'We focus on high-end finishes, efficient layouts, and premium materials, ensuring seamless execution from plumbing and electrical to the final custom details.'}
                 {service.id === 'design' && 'From conceptual planning to material selection, we collaborate closely with you to create interiors that are both beautiful and purposeful.'}
                 {service.id === 'fix-and-flip' && 'We help investors maximize ROI through strategic renovations. Our team delivers high-quality craftsmanship with transparent communication on budgets, schedules, and quality control — ensuring successful projects on time and on budget.'}
+                {service.id === 'pre-listing-fix-flip' && 'At Deluxe, we focus on strategic renovations that enhance market appeal and increase property value. We work with precision and efficiency to deliver high-impact results, ensuring your property is market-ready and positioned for success.'}
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">

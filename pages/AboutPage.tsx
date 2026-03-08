@@ -54,7 +54,7 @@ const AboutPage: React.FC = () => {
               Building legacies, <br /><span className="text-zinc-400">one detail at a time.</span>
             </h1>
             <p className="text-xl md:text-2xl font-manrope text-zinc-400 leading-relaxed max-w-2xl">
-              Welcome to DELUXE. We are a premier construction company dedicated to transforming visions into reality. With a passion for excellence and a commitment to quality, we specialize in residential and commercial remodeling, flooring, drywall, and custom renovations.
+              Building legacies, one detail at a time. We are a premier construction and renovation company dedicated to transforming visions into reality.
             </p>
           </motion.div>
         </div>

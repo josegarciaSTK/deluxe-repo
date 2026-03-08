@@ -28,7 +28,7 @@ const Header: React.FC = () => {
         {/* Logo */}
         <Link to="/" className="flex items-center">
           <img
-            src={scrolled ? '/images/deluxe-logo-black.png' : '/images/deluxe-logo-white.svg'}
+            src={scrolled ? '/images/deluxe-black.png' : '/images/deluxe-white.png'}
             alt="Deluxe Renovations"
             className="h-8 w-auto transition-all duration-300"
           />

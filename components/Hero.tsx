@@ -6,7 +6,17 @@ import { Link } from 'react-router-dom';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative min-h-[85vh] bg-[#152218] overflow-hidden pt-32 pb-20 md:pt-48 flex items-center">
+    <section className="relative min-h-[90vh] bg-[#152218] overflow-hidden pt-32 pb-20 md:pt-48 flex items-center">
+      {/* Eagle Watermark Background */}
+      <div className="absolute inset-0 flex items-center justify-end pointer-events-none overflow-hidden">
+        <img
+          src="/images/deluxe-submark-white.svg"
+          alt=""
+          className="h-[80vh] w-auto opacity-[0.03] mr-[-5%]"
+          aria-hidden="true"
+        />
+      </div>
+
       <div className="max-w-7xl mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
         <div className="max-w-2xl text-left">
           <motion.div
@@ -28,21 +38,23 @@ const Hero: React.FC = () => {
             Crafting <span className="text-zinc-500 italic">Legacy</span> Through Luxury.
           </motion.h1>
 
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-lg md:text-xl font-manrope text-zinc-400 mb-10 max-w-lg leading-relaxed"
+            className="text-lg md:text-xl font-manrope text-zinc-400 mb-10 max-w-2xl leading-relaxed space-y-4"
           >
-            DLX Renovations transforms high-end properties into architectural masterpieces with 15 years of precision and expertise.
-          </motion.p>
+            <p>
+              At Deluxe, every project is built to elevate the space and exceed expectations. We specialize in residential and commercial remodeling, flooring, drywall, and custom renovations.
+            </p>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <Link to="/contact" className="group inline-flex items-center gap-6 px-8 py-3 bg-white text-zinc-900 rounded-full font-manrope font-bold hover:bg-zinc-200 transition-all">
+            <Link to="/contact" className="group inline-flex items-center gap-6 px-8 py-4 bg-white text-zinc-900 rounded-full font-manrope font-bold hover:bg-zinc-200 transition-all">
               Start Your Vision
               <span className="flex items-center justify-center w-10 h-10 bg-zinc-900 rounded-full group-hover:rotate-45 transition-transform">
                 <ArrowUpRight className="text-white" size={20} />
@@ -56,7 +68,7 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, scale: 0.95, x: 30 }}
           animate={{ opacity: 1, scale: 1, x: 0 }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-full md:w-[600px] h-[500px] overflow-hidden shadow-2xl"
+          className="relative w-full md:w-[600px] h-[600px] overflow-hidden shadow-2xl rounded-2xl"
         >
           <img
             src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2670"
@@ -74,13 +86,15 @@ const Hero: React.FC = () => {
               <div className="text-zinc-400 text-xs font-bold uppercase tracking-widest">
                 Verified Excellence
               </div>
-              <img src="/images/submark.png" alt="Deluxe Seal" className="h-8 w-auto opacity-50 contrast-125" />
+              <img src="/images/deluxe-submark-white.svg" alt="Deluxe Seal" className="h-8 w-auto opacity-60" />
             </div>
             <p className="text-sm font-manrope leading-relaxed opacity-80 mb-4">
-              "Every detail was handled with precision. DLX turned our vision into an elite living experience."
+              "Every detail was handled with precision. Deluxe turned our vision into an elite living experience."
             </p>
             <div className="flex items-center gap-4">
-              <img src="/images/deluxe-icon.png" alt="Icon" className="h-6 w-auto grayscale" />
+              <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
+                <img src="/images/deluxe-submark-white.svg" alt="Icon" className="h-5 w-auto opacity-60" />
+              </div>
               <div className="font-manrope text-xs font-bold uppercase tracking-tighter">
                 — PREMIUM CLIENT, ORLANDO
               </div>
