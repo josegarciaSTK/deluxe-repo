@@ -71,16 +71,14 @@ const AboutPage: React.FC = () => {
               <div className="relative">
                 <div className="aspect-[4/5] overflow-hidden shadow-2xl">
                   <img
-                    src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800"
-                    alt="Luxury interior construction"
+                    src="/images/attached-interior.png"
+                    alt="Luxury interior construction in progress"
                     className="w-full h-full object-cover grayscale"
                   />
                 </div>
                 <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-[#152218] p-10 hidden md:flex flex-col justify-center text-white">
-                  <span className="text-5xl font-manrope font-light mb-2">15+</span>
-                  <p className="text-zinc-400 font-manrope uppercase tracking-widest text-xs font-bold leading-tight">
-                    Years of excellence in building
-                  </p>
+                  <span className="text-5xl font-manrope font-light mb-2">11+</span>
+                  <span className="text-zinc-400 font-manrope uppercase tracking-widest text-xs font-bold leading-tight">Years of Built Trust</span>
                 </div>
               </div>
             </motion.div>

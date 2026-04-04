@@ -4,16 +4,15 @@ import { motion } from 'framer-motion';
 import { STATS } from '../constants';
 
 const About: React.FC = () => {
-  // A larger set of images for the horizontal scroll
   const galleryImages = [
-    '/images/kitchen-after-1.jpg',
-    '/images/shower-after-2.jpg',
-    '/images/flooring-after-2.jpg',
-    '/images/renovation-after.jpg',
-    '/images/fixflip-after-1.jpg',
-    '/images/kitchen-luxe.jpg',
-    '/images/backsplash.jpg',
-    '/images/kitchen-after-2.jpg',
+    '/images/vlp-kitchen/kitchen-1.jpg',
+    '/images/vlp-kitchen/kitchen-3.jpg',
+    '/images/vlp-kitchen/kitchen-4.jpg',
+    '/images/vlp-bathroom/bath-1.jpg',
+    '/images/vlp-staircase/stairs-1.jpg',
+    '/images/vlp-mudcloset/mudcloset-1.jpg',
+    '/images/vlp-after/after-exterior.jpg',
+    '/images/vlp-after/after-2.jpg',
   ];
 
   return (
@@ -29,8 +28,9 @@ const About: React.FC = () => {
             </h2>
           </div>
           <div className="lg:w-2/3">
-            <p className="text-xl md:text-2xl font-manrope text-zinc-600 leading-relaxed">
-              With over 11 years of experience, <span className="font-bold text-zinc-900">DELUXE</span> has delivered luxury multi-family communities, commercial spaces, custom homes, and high-end renovations. We bring precision, elegance, and exceptional craftsmanship to every project — transforming spaces with quality, efficiency, and meticulous attention to detail.
+            <p className="text-xl md:text-2xl font-manrope text-zinc-600 leading-relaxed space-y-4">
+              <span className="block mb-4">With over 11 years of experience building luxury multi-family communities, commercial spaces, custom homes, ADUs, and high-end renovations, we deliver results that combine quality, efficiency, and attention to detail.</span>
+              <span className="block">At <span className="font-bold text-zinc-900">Deluxe</span>, every project is built to elevate the space and exceed expectations. We specialize in residential and commercial remodeling, flooring, drywall, and custom renovations.</span>
             </p>
           </div>
         </div>

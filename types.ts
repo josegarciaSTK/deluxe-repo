@@ -17,6 +17,7 @@ export interface Project {
   client: string;
   image: string;
   clientImage: string;
+  galleryImages: string[];
 }
 
 export interface FAQ {

@@ -1,12 +1,13 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, Minus } from 'lucide-react';
+import { Plus, Minus, ArrowRight, ChevronDown, ChevronUp } from 'lucide-react';
 import { SERVICES } from '../constants';
 import { Link } from 'react-router-dom';
 
 const Services: React.FC = () => {
   const [openId, setOpenId] = useState<string | null>(SERVICES[0].id);
+  const [showAllServices, setShowAllServices] = useState(false);
 
   return (
     <section id="services" className="py-24 bg-zinc-50">
@@ -82,6 +83,68 @@ const Services: React.FC = () => {
             ))}
           </div>
         </div>
+
+        {/* Expandable Services Grid */}
+        <div className="mt-16 text-center">
+          <button
+            onClick={() => setShowAllServices(!showAllServices)}
+            className="group inline-flex items-center gap-3 px-8 py-4 bg-zinc-900 text-white rounded-full font-manrope font-bold text-sm hover:bg-zinc-800 transition-all"
+          >
+            {showAllServices ? 'Hide Services' : 'View All Services'}
+            <span className={`flex items-center justify-center w-8 h-8 rounded-full bg-white/10 transition-transform duration-300 ${showAllServices ? 'rotate-180' : ''}`}>
+              <ChevronDown className="text-white" size={18} />
+            </span>
+          </button>
+        </div>
+
+        <AnimatePresence>
+          {showAllServices && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+              className="overflow-hidden"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+                {SERVICES.map((service, idx) => (
+                  <motion.div
+                    key={service.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: idx * 0.08 }}
+                  >
+                    <Link
+                      to={`/services/${service.id}`}
+                      className="group block bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-zinc-100"
+                    >
+                      <div className="aspect-[16/10] overflow-hidden">
+                        <img
+                          src={service.image}
+                          alt={service.title}
+                          loading="lazy"
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                      </div>
+                      <div className="p-6">
+                        <h4 className="font-manrope font-semibold text-lg text-zinc-900 mb-2 group-hover:text-zinc-700 transition-colors">
+                          {service.title}
+                        </h4>
+                        <p className="text-sm text-zinc-500 font-manrope leading-relaxed line-clamp-2 mb-4">
+                          {service.description}
+                        </p>
+                        <div className="flex items-center gap-2 text-zinc-900 font-manrope font-semibold text-sm group-hover:gap-3 transition-all">
+                          Learn More
+                          <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+                        </div>
+                      </div>
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );

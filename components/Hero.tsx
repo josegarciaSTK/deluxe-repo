@@ -35,19 +35,17 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="text-5xl md:text-8xl font-manrope font-medium text-white leading-[1.05] mb-8 tracking-tight"
           >
-            Crafting <span className="text-zinc-500 italic">Legacy</span> Through Luxury.
+            Elite <span className="text-zinc-500 italic">Craftsmanship</span> Since 2015.
           </motion.h1>
 
-          <motion.div
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-lg md:text-xl font-manrope text-zinc-400 mb-10 max-w-2xl leading-relaxed space-y-4"
+            className="text-lg md:text-xl font-manrope text-zinc-400 mb-10 max-w-lg leading-relaxed"
           >
-            <p>
-              At Deluxe, every project is built to elevate the space and exceed expectations. We specialize in residential and commercial remodeling, flooring, drywall, and custom renovations.
-            </p>
-          </motion.div>
+            Deluxe Renovations transforms properties across Florida into high-end architectural masterpieces with 11 years of precision.
+          </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
