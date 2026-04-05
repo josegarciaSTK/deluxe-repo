@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Hammer, Home, Paintbrush, Briefcase, Ruler, TrendingUp } from 'lucide-react';
-import { Service, Project, FAQ, Stat } from './types';
+import { Service, Project, ProjectFolder, FAQ, Stat } from './types';
 
 export const SERVICES: Service[] = [
   {
@@ -55,10 +55,12 @@ export const SERVICES: Service[] = [
   }
 ];
 
-export const PROJECTS: Project[] = [
+// ─── INDIVIDUAL PROJECTS ────────────────────────────────────────────────────
+
+const VLP_PROJECTS: Project[] = [
   {
     id: 'vlp-kitchen',
-    title: '26 Village Las Palmas – Modern Kitchen',
+    title: 'Modern Kitchen',
     category: 'Kitchen',
     duration: '5 weeks',
     description: 'Complete kitchen transformation featuring modern two-tone shaker cabinetry, premium marble-look quartz countertops with a waterfall edge, and a single-bowl undermount black sink. Every surface was precision-finished for a sleek, contemporary result.',
@@ -66,7 +68,7 @@ export const PROJECTS: Project[] = [
     client: 'Private Client – Las Palmas',
     image: '/images/vlp-kitchen/kitchen-1.jpg',
     clientImage: '/images/deluxe-submark-black.png',
-    galleryImages: [
+    afterImages: [
       '/images/vlp-kitchen/kitchen-1.jpg',
       '/images/vlp-kitchen/kitchen-2.jpg',
       '/images/vlp-kitchen/kitchen-3.jpg',
@@ -74,10 +76,16 @@ export const PROJECTS: Project[] = [
       '/images/vlp-kitchen/kitchen-5.jpg',
       '/images/vlp-kitchen/kitchen-6.jpg',
     ],
+    beforeImages: [
+      '/images/vlp-before/before-5.jpg',
+      '/images/vlp-before/before-6.jpg',
+      '/images/vlp-before/before-7.jpg',
+      '/images/vlp-before/before-8.jpg',
+    ],
   },
   {
     id: 'vlp-bathroom-master',
-    title: '26 Village Las Palmas – Master Bathroom',
+    title: 'Master Bathroom',
     category: 'Bathroom',
     duration: '3 weeks',
     description: 'A spa-like master bathroom renovation with large-format vertical tile, a frameless glass shower with black hardware, custom vanity with quartz top, and modern hexagon floor tiling.',
@@ -85,7 +93,7 @@ export const PROJECTS: Project[] = [
     client: 'Private Client – Las Palmas',
     image: '/images/vlp-bathroom/bath-1.jpg',
     clientImage: '/images/deluxe-submark-black.png',
-    galleryImages: [
+    afterImages: [
       '/images/vlp-bathroom/bath-1.jpg',
       '/images/vlp-bathroom/bath-2.jpg',
       '/images/vlp-bathroom/bath-3.jpg',
@@ -93,82 +101,131 @@ export const PROJECTS: Project[] = [
       '/images/vlp-bathroom/bath-5.jpg',
       '/images/vlp-bathroom/bath-6.jpg',
     ],
+    beforeImages: [
+      '/images/vlp-before/before-1.jpg',
+      '/images/vlp-before/before-2.jpg',
+      '/images/vlp-before/before-3.jpg',
+      '/images/vlp-before/before-4.jpg',
+    ],
   },
   {
     id: 'vlp-staircase',
-    title: '26 Village Las Palmas – Custom Staircase',
-    category: 'Interior',
+    title: 'Custom Staircase',
+    category: 'Other',
     duration: '2 weeks',
     description: 'A beautifully crafted custom staircase featuring high-contrast patterned tile risers, natural wood treads, and a modern black metal railing system that serves as the architectural focal point of the home.',
     testimonial: 'The staircase completely elevates the entryway. It\'s the first thing guests notice and it sets the tone for the entire home. Outstanding craftsmanship by the Deluxe crew.',
     client: 'Private Client – Las Palmas',
     image: '/images/vlp-staircase/stairs-1.jpg',
     clientImage: '/images/deluxe-submark-black.png',
-    galleryImages: [
+    afterImages: [
       '/images/vlp-staircase/stairs-1.jpg',
       '/images/vlp-staircase/stairs-2.jpg',
       '/images/vlp-staircase/stairs-3.jpg',
       '/images/vlp-staircase/stairs-4.jpg',
       '/images/vlp-staircase/stairs-5.jpg',
     ],
+    beforeImages: [],
   },
   {
     id: 'vlp-mudcloset',
-    title: '26 Village Las Palmas – Custom Mudroom',
-    category: 'Interior',
+    title: 'Custom Mudroom',
+    category: 'Other',
     duration: '1 week',
     description: 'Custom built-in mudroom featuring a natural wood bench and shelving, shiplap backing with black hooks, and integrated cubby storage — designed for elegant daily organization.',
     testimonial: 'The mudroom is one of those details that makes this house feel like a true custom home. Practical, beautiful, and built to last. Deluxe thinks of everything.',
     client: 'Private Client – Las Palmas',
     image: '/images/vlp-mudcloset/mudcloset-1.jpg',
     clientImage: '/images/deluxe-submark-black.png',
-    galleryImages: [
+    afterImages: [
       '/images/vlp-mudcloset/mudcloset-1.jpg',
       '/images/vlp-mudcloset/mudcloset-2.jpg',
       '/images/vlp-mudcloset/mudcloset-3.jpg',
     ],
+    beforeImages: [],
   },
   {
     id: 'vlp-exterior',
-    title: '26 Village Las Palmas – Full Home Remodel',
-    category: 'Remodel',
+    title: 'Full Home Remodel',
+    category: 'Other',
     duration: '8 weeks',
     description: 'Complete exterior transformation including fresh architectural paint, enhanced landscaping, a new front entrance, and premium curb appeal details that showcase the full scale of this renovation.',
     testimonial: 'From the moment you pull up, this house looks like a completely different property. The exterior transformation is breathtaking. Deluxe delivered a true dream home.',
     client: 'Private Client – Las Palmas',
     image: '/images/vlp-after/after-exterior.jpg',
     clientImage: '/images/deluxe-submark-black.png',
-    galleryImages: [
+    afterImages: [
       '/images/vlp-after/after-exterior.jpg',
       '/images/vlp-after/after-1.jpg',
       '/images/vlp-after/after-2.jpg',
       '/images/vlp-after/after-3.jpg',
     ],
-  },
-  {
-    id: 'mariana-winter-park',
-    title: 'Mariana Betancourt – Winter Park Remodel',
-    category: 'Remodel',
-    duration: '4 weeks',
-    description: 'A beautiful complete remodel in Winter Park featuring modern updates, bringing a fresh and refined elegance to every corner of the home.',
-    testimonial: 'The transformation is absolutely incredible. Deluxe delivered exactly what we envisioned, with meticulous attention to detail and outstanding professionalism.',
-    client: 'Mariana Betancourt',
-    image: '/images/mariana-winter-park/1.jpg',
-    clientImage: '/images/deluxe-submark-black.png',
-    galleryImages: [
-      '/images/mariana-winter-park/1.jpg',
-      '/images/mariana-winter-park/2.jpg',
-      '/images/mariana-winter-park/3.jpg',
-      '/images/mariana-winter-park/4.jpg',
-      '/images/mariana-winter-park/5.jpg',
+    beforeImages: [
+      '/images/vlp-before/before-1.jpg',
+      '/images/vlp-before/before-2.jpg',
+      '/images/vlp-before/before-3.jpg',
+      '/images/vlp-before/before-4.jpg',
     ],
   },
+];
+
+const MARIANA_PROJECTS: Project[] = [
+  {
+    id: 'mariana-kitchen',
+    title: 'Kitchen Remodel',
+    category: 'Kitchen',
+    duration: '3 weeks',
+    description: 'A stunning modern kitchen transformation — fresh cabinetry, premium countertops, and thoughtful design details that breathe new life into this Winter Park home.',
+    testimonial: 'The transformation is absolutely incredible. Deluxe delivered exactly what we envisioned, with meticulous attention to detail and outstanding professionalism.',
+    client: 'Mariana Betancourt',
+    image: '/images/mariana-after/after-2.jpg',
+    clientImage: '/images/deluxe-submark-black.png',
+    afterImages: [
+      '/images/mariana-after/after-1.jpg',
+      '/images/mariana-after/after-2.jpg',
+      '/images/mariana-after/after-3.jpg',
+      '/images/mariana-after/after-4.jpg',
+      '/images/mariana-after/after-5.jpg',
+    ],
+    beforeImages: [
+      '/images/mariana-before/before-1.jpg',
+      '/images/mariana-before/before-2.jpg',
+      '/images/mariana-before/before-3.jpg',
+      '/images/mariana-before/before-4.jpg',
+      '/images/mariana-before/before-5.jpg',
+      '/images/mariana-before/before-6.jpg',
+      '/images/mariana-before/before-7.jpg',
+    ],
+  },
+];
+
+// ─── PROJECT FOLDERS ────────────────────────────────────────────────────────
+
+export const PROJECT_FOLDERS: ProjectFolder[] = [
+  {
+    id: 'mariana-winter-park',
+    name: 'Mariana Betancourt – Winter Park',
+    coverImage: '/images/mariana-after/after-2.jpg',
+    projects: MARIANA_PROJECTS,
+  },
+  {
+    id: '26-village-las-palmas',
+    name: '26 Village Las Palmas',
+    coverImage: '/images/vlp-kitchen/kitchen-1.jpg',
+    projects: VLP_PROJECTS,
+  },
+];
+
+// Legacy flat list for backwards compatibility with other parts of the site
+export const PROJECTS: Project[] = [
+  ...MARIANA_PROJECTS,
+  ...VLP_PROJECTS,
 ];
 
 export const FAQS: FAQ[] = [
   {
     question: 'What area are you based in?',
-    answer: 'We serve Saint Cloud, Orlando, and the surrounding Florida metro areas. We are available 24/7 for emergency services.'
+    answer: 'We serve Saint Cloud, FL and the surrounding Florida areas. We are available 24/7 for emergency services.'
   },
   {
     question: 'How long does a typical project take?',

@@ -43,8 +43,7 @@ const ContactPage: React.FC = () => {
           </div>
           <div className="p-10 bg-white border border-zinc-100">
             <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-zinc-400 mb-6">Headquarters</h4>
-            <p className="text-lg font-manrope text-zinc-900">Saint Cloud, FL</p>
-            <p className="text-lg font-manrope text-zinc-900">Orlando Metro Area</p>
+            <p className="text-lg font-manrope text-zinc-900">Saint Cloud, FL 34771</p>
           </div>
         </div>
       </section>

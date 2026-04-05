@@ -10,14 +10,22 @@ export interface Service {
 export interface Project {
   id: string;
   title: string;
-  category: string;
+  category: string; // 'Kitchen' | 'Bathroom' | 'Other'
   duration: string;
   description: string;
   testimonial: string;
   client: string;
-  image: string;
+  image: string; // Cover/thumbnail image
   clientImage: string;
-  galleryImages: string[];
+  afterImages: string[];  // After photos only
+  beforeImages: string[]; // Before photos only
+}
+
+export interface ProjectFolder {
+  id: string;
+  name: string;
+  coverImage: string;
+  projects: Project[];
 }
 
 export interface FAQ {

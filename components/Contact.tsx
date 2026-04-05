@@ -30,7 +30,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="text-sm uppercase font-bold text-zinc-500 tracking-widest">Office</h4>
-                  <p className="text-lg font-manrope">Saint Cloud, Orlando</p>
+                  <p className="text-lg font-manrope">Saint Cloud, FL 34771</p>
                 </div>
 
               </div>
