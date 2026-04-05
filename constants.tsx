@@ -72,9 +72,6 @@ const VLP_PROJECTS: Project[] = [
       '/images/vlp-kitchen/kitchen-1.jpg',
       '/images/vlp-kitchen/kitchen-2.jpg',
       '/images/vlp-kitchen/kitchen-3.jpg',
-      '/images/vlp-kitchen/kitchen-4.jpg',
-      '/images/vlp-kitchen/kitchen-5.jpg',
-      '/images/vlp-kitchen/kitchen-6.jpg',
     ],
     beforeImages: [
       '/images/vlp-before/before-5.jpg',
