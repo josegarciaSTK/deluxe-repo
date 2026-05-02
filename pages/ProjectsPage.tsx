@@ -1,6 +1,106 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, ChevronRight as Arrow, Images, MapPin, ArrowLeft, Clock, User } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ChevronRight as Arrow, Images, MapPin, ArrowLeft, Clock, User, ZoomIn, X } from 'lucide-react';
+
+// ─── Lightbox ─────────────────────────────────────────────────────────────────
+
+const Lightbox: React.FC<{
+  images: string[];
+  startIndex: number;
+  onClose: () => void;
+}> = ({ images, startIndex, onClose }) => {
+  const [idx, setIdx] = useState(startIndex);
+
+  const next = useCallback(() => setIdx(i => Math.min(i + 1, images.length - 1)), [images.length]);
+  const prev = useCallback(() => setIdx(i => Math.max(i - 1, 0)), []);
+
+  useEffect(() => {
+    const h = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowRight') next();
+      else if (e.key === 'ArrowLeft') prev();
+      else if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', h);
+    return () => window.removeEventListener('keydown', h);
+  }, [next, prev, onClose]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.18 }}
+      className="fixed inset-0 z-[999] bg-black/95 flex flex-col items-center justify-center"
+      onClick={onClose}
+    >
+      {/* Close */}
+      <button
+        onClick={onClose}
+        className="absolute top-5 right-5 w-10 h-10 flex items-center justify-center text-white/60 hover:text-white transition-colors z-10"
+      >
+        <X size={22} />
+      </button>
+
+      {/* Counter */}
+      <div className="absolute top-5 left-1/2 -translate-x-1/2 text-white/50 text-xs font-manrope tabular-nums">
+        {idx + 1} / {images.length}
+      </div>
+
+      {/* Image */}
+      <div
+        className="w-full h-full flex items-center justify-center px-16 py-16"
+        onClick={e => e.stopPropagation()}
+      >
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={idx}
+            initial={{ opacity: 0, scale: 0.97 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.18 }}
+            src={images[idx]}
+            alt={`Photo ${idx + 1}`}
+            className="max-w-full max-h-full object-contain rounded-sm shadow-2xl"
+            style={{ maxHeight: 'calc(100vh - 8rem)' }}
+          />
+        </AnimatePresence>
+      </div>
+
+      {/* Nav arrows */}
+      {idx > 0 && (
+        <button
+          onClick={e => { e.stopPropagation(); prev(); }}
+          className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all"
+        >
+          <ChevronLeft size={22} />
+        </button>
+      )}
+      {idx < images.length - 1 && (
+        <button
+          onClick={e => { e.stopPropagation(); next(); }}
+          className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all"
+        >
+          <ChevronRight size={22} />
+        </button>
+      )}
+
+      {/* Thumbnails */}
+      {images.length > 1 && (
+        <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 overflow-x-auto max-w-[90vw] px-2">
+          {images.map((img, i) => (
+            <button
+              key={i}
+              onClick={e => { e.stopPropagation(); setIdx(i); }}
+              className={`flex-shrink-0 w-12 h-12 rounded overflow-hidden transition-all ${i === idx ? 'ring-2 ring-white opacity-100' : 'opacity-40 hover:opacity-70'}`}
+            >
+              <img src={img} alt="" className="w-full h-full object-cover" />
+            </button>
+          ))}
+        </div>
+      )}
+    </motion.div>
+  );
+};
 import { PROJECTS } from '../constants';
 import { Project } from '../types';
 
@@ -44,6 +144,7 @@ const Page3: React.FC<{ project: Project; onBack: () => void }> = ({ project, on
   );
   const [idx, setIdx] = useState(0);
   const [dir, setDir] = useState(0);
+  const [lightbox, setLightbox] = useState<{ images: string[]; index: number } | null>(null);
 
   const compLen = Math.max(project.beforeImages.length, project.afterImages.length);
   const maxIdx = mode === 'gallery' ? project.afterImages.length - 1 : compLen - 1;
@@ -159,9 +260,18 @@ const Page3: React.FC<{ project: Project; onBack: () => void }> = ({ project, on
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
             <div className="flex-1 flex flex-col gap-2">
               <span className="text-center text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-300">Before</span>
-              <div className="relative overflow-hidden rounded-xl bg-zinc-100" style={{ aspectRatio: '4/3' }}>
+              <div
+                className="relative overflow-hidden rounded-xl bg-zinc-100 cursor-zoom-in group"
+                style={{ aspectRatio: '4/3' }}
+                onClick={() => project.beforeImages[idx] && setLightbox({ images: project.beforeImages, index: idx })}
+              >
                 {project.beforeImages[idx]
-                  ? <img src={project.beforeImages[idx]} alt="Before" className="absolute inset-0 w-full h-full object-cover" />
+                  ? <>
+                      <img src={project.beforeImages[idx]} alt="Before" className="absolute inset-0 w-full h-full object-cover" />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                        <ZoomIn size={28} className="text-white opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-lg" />
+                      </div>
+                    </>
                   : <div className="absolute inset-0 flex items-center justify-center"><span className="text-zinc-300 text-xs uppercase tracking-widest font-manrope">No photo</span></div>}
               </div>
             </div>
@@ -176,16 +286,29 @@ const Page3: React.FC<{ project: Project; onBack: () => void }> = ({ project, on
             </div>
             <div className="flex-1 flex flex-col gap-2">
               <span className="text-center text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500">After</span>
-              <div className="relative overflow-hidden rounded-xl bg-zinc-100" style={{ aspectRatio: '4/3' }}>
+              <div
+                className="relative overflow-hidden rounded-xl bg-zinc-100 cursor-zoom-in group"
+                style={{ aspectRatio: '4/3' }}
+                onClick={() => project.afterImages[idx] && setLightbox({ images: project.afterImages, index: idx })}
+              >
                 {project.afterImages[idx]
-                  ? <img src={project.afterImages[idx]} alt="After" className="absolute inset-0 w-full h-full object-cover" />
+                  ? <>
+                      <img src={project.afterImages[idx]} alt="After" className="absolute inset-0 w-full h-full object-cover" />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                        <ZoomIn size={28} className="text-white opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-lg" />
+                      </div>
+                    </>
                   : <div className="absolute inset-0 flex items-center justify-center"><span className="text-zinc-300 text-xs uppercase tracking-widest font-manrope">No photo</span></div>}
               </div>
             </div>
           </div>
         ) : (
           <div className="flex flex-col gap-4">
-            <div className="relative overflow-hidden rounded-xl bg-zinc-100" style={{ aspectRatio: '16/9' }}>
+            <div
+              className="relative overflow-hidden rounded-xl bg-zinc-100 cursor-zoom-in group"
+              style={{ aspectRatio: '16/9' }}
+              onClick={() => setLightbox({ images: project.afterImages, index: idx })}
+            >
               <AnimatePresence custom={dir} mode="wait">
                 <motion.img
                   key={idx}
@@ -201,18 +324,22 @@ const Page3: React.FC<{ project: Project; onBack: () => void }> = ({ project, on
                 />
               </AnimatePresence>
               {idx > 0 && (
-                <button onClick={prev} className="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/90 hover:bg-white shadow-lg flex items-center justify-center transition-all">
+                <button onClick={e => { e.stopPropagation(); prev(); }} className="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/90 hover:bg-white shadow-lg flex items-center justify-center transition-all">
                   <ChevronLeft size={20} className="text-zinc-700" />
                 </button>
               )}
               {idx < project.afterImages.length - 1 && (
-                <button onClick={next} className="absolute right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/90 hover:bg-white shadow-lg flex items-center justify-center transition-all">
+                <button onClick={e => { e.stopPropagation(); next(); }} className="absolute right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/90 hover:bg-white shadow-lg flex items-center justify-center transition-all">
                   <ChevronRight size={20} className="text-zinc-700" />
                 </button>
               )}
               <div className="absolute bottom-4 right-4 flex items-center gap-1.5 px-3 py-1.5 rounded-sm bg-black/50 backdrop-blur-sm">
                 <Images size={10} className="text-white/70" />
                 <span className="text-white text-[11px] font-manrope tabular-nums">{idx + 1} / {project.afterImages.length}</span>
+              </div>
+              <div className="absolute top-4 left-4 flex items-center gap-1.5 px-2.5 py-1.5 rounded-sm bg-black/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                <ZoomIn size={11} className="text-white/80" />
+                <span className="text-white/80 text-[10px] font-manrope uppercase tracking-widest">Tap to zoom</span>
               </div>
             </div>
             {project.afterImages.length > 1 && (
@@ -227,6 +354,17 @@ const Page3: React.FC<{ project: Project; onBack: () => void }> = ({ project, on
             )}
           </div>
         )}
+
+        {/* Lightbox */}
+        <AnimatePresence>
+          {lightbox && (
+            <Lightbox
+              images={lightbox.images}
+              startIndex={lightbox.index}
+              onClose={() => setLightbox(null)}
+            />
+          )}
+        </AnimatePresence>
 
         {project.testimonial && (
           <div className="mt-14 border-t border-zinc-100 pt-12">

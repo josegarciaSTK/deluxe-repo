@@ -148,9 +148,7 @@ export const PROJECTS: Project[] = [
       '/images/vlp-bathroom/bath-6.jpg',
     ],
     beforeImages: [
-      '/images/vlp-before/before-1.jpg',
       '/images/vlp-before/before-2.jpg',
-      '/images/vlp-before/before-3.jpg',
       '/images/vlp-before/before-4.jpg',
     ],
   },
