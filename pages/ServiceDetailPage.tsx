@@ -2,7 +2,7 @@
 import React from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { SERVICES } from '../constants';
+import { SERVICES } from '../data/services';
 import { ArrowLeft, CheckCircle2, ArrowRight } from 'lucide-react';
 
 const ServiceDetailPage: React.FC = () => {
@@ -25,7 +25,7 @@ const ServiceDetailPage: React.FC = () => {
         <div className="absolute inset-0">
           <img
             src={service.image}
-            alt={service.title}
+            alt={service.name}
             className="w-full h-full object-cover scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-black/30"></div>
@@ -41,7 +41,7 @@ const ServiceDetailPage: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-5xl md:text-8xl font-manrope font-medium text-zinc-900 tracking-tighter"
           >
-            {service.title}
+            {service.name}
           </motion.h1>
         </div>
       </section>
@@ -102,7 +102,7 @@ const ServiceDetailPage: React.FC = () => {
                     to={`/services/${s.id}`}
                     className="px-6 py-3 border border-zinc-200 hover:border-zinc-900 transition-all text-sm font-bold uppercase tracking-widest"
                   >
-                    {s.title}
+                    {s.name}
                   </Link>
                 ))}
               </div>
