@@ -92,7 +92,7 @@ const Lightbox: React.FC<LightboxProps> = ({ images, projectTitle, initialIndex 
               transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
               src={images[currentIndex]}
               alt={`${projectTitle} - Photo ${currentIndex + 1}`}
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-contain"
             />
           </AnimatePresence>
 
