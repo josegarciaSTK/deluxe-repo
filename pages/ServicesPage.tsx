@@ -35,13 +35,13 @@ const ServicesPage: React.FC = () => {
                   <div className="w-8 h-8 bg-zinc-900 group-hover:bg-white"></div>
                 </div>
                 <h3 className="text-3xl font-manrope font-semibold text-zinc-900 mb-6 group-hover:text-white transition-colors">
-                  {service.name}
+                  {service.title}
                 </h3>
                 <p className="text-lg text-zinc-500 group-hover:text-zinc-400 transition-colors mb-8 leading-relaxed font-manrope">
                   {service.description}
                 </p>
                 <div className="h-[400px] w-full overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
-                  <img src={service.image} alt={service.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
+                  <img src={service.image} alt={service.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
                 </div>
                 <div className="mt-8 flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-zinc-900 group-hover:text-white transition-colors">
                   Explore Service

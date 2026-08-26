@@ -1,93 +1,79 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { PROJECTS } from '../constants';
-import { ArrowRight, Images } from 'lucide-react';
+import { Eye, ArrowRight } from 'lucide-react';
+import { Project } from '../types';
+import Lightbox from './Lightbox';
 
 const Portfolio: React.FC = () => {
-  // Take 6 featured projects for the home page
-  const featuredProjects = PROJECTS.slice(0, 6);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
-    <section id="portfolio" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-        
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
-          <div className="max-w-2xl">
-            <motion.span
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-4 block"
-            >
-              Featured Work
-            </motion.span>
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-manrope font-medium text-zinc-900 leading-tight"
-            >
-              Transforming Visions Into<br />
-              <span className="text-zinc-400">Architectural Reality</span>
-            </motion.h2>
+    <>
+      <section id="projects" className="bg-white overflow-hidden py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6">
+          <div className="text-center mb-12 md:mb-16">
+            <span className="inline-block px-4 py-2 rounded-full bg-zinc-900 text-white text-xs font-manrope font-bold uppercase tracking-wider mb-6">
+              Our work
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-manrope font-medium text-zinc-900 mb-6">
+              26 Village Las Palmas
+            </h2>
+            <p className="text-base md:text-xl text-zinc-500 font-manrope max-w-3xl mx-auto">
+              Full Home Renovation — Explore every detail of this complete residential transformation, from the marble kitchen to custom staircase.
+            </p>
           </div>
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <Link
-              to="/projects"
-              className="group flex items-center gap-3 px-8 py-4 border border-zinc-200 text-zinc-900 text-xs font-bold uppercase tracking-widest hover:bg-zinc-900 hover:text-white transition-all"
-            >
-              View Full Portfolio
-              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </motion.div>
-        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {featuredProjects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="group"
-            >
-              <Link to={`/projects`} className="block">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-zinc-100 mb-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+            {PROJECTS.filter(p => !p.id.includes('mariana')).map((project, idx) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                className={`group cursor-pointer relative overflow-hidden rounded-2xl shadow-lg ${
+                  idx === 0 ? 'sm:col-span-2 lg:col-span-2' : ''
+                }`}
+                onClick={() => setSelectedProject(project)}
+              >
+                <div className={`${idx === 0 ? 'aspect-[16/10]' : 'aspect-[4/3]'} overflow-hidden`}>
                   <img
                     src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500" />
-                  
-                  {/* Hover Meta */}
-                  <div className="absolute top-4 right-4 flex items-center gap-2 px-3 py-1.5 bg-white/10 backdrop-blur-md rounded-full text-white text-[10px] font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
-                    <Images size={12} />
-                    {project.afterImages.length + project.beforeImages.length} Photos
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-5 md:p-6">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="px-3 py-1 bg-white/20 backdrop-blur-sm text-white text-xs font-semibold rounded-full">
+                      {project.category}
+                    </span>
+                  </div>
+                  <h3 className="text-white font-manrope font-semibold text-lg md:text-xl mb-1">
+                    {project.title.replace('26 Village Las Palmas – ', '')}
+                  </h3>
+                  <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:rotate-0 rotate-45 transition-all">
+                    <Eye className="text-white" size={18} />
                   </div>
                 </div>
-
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-6 h-px bg-zinc-300" />
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-400">
-                    {project.category} · {project.location}
-                  </span>
-                </div>
-                <h3 className="text-xl font-manrope font-semibold text-zinc-900 group-hover:text-zinc-600 transition-colors">
-                  {project.title}
-                </h3>
-              </Link>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <AnimatePresence>
+        {selectedProject && (
+          <Lightbox
+            images={selectedProject.galleryImages}
+            projectTitle={selectedProject.title}
+            onClose={() => setSelectedProject(null)}
+          />
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 

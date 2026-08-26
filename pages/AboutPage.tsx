@@ -39,7 +39,7 @@ const AboutPage: React.FC = () => {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative pt-48 pb-32 bg-[#152218] overflow-hidden">
+      <section className="relative pt-24 sm:pt-32 md:pt-48 pb-16 md:pb-32 bg-[#152218] overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -63,15 +63,15 @@ const AboutPage: React.FC = () => {
       {/* Philosophy Section */}
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col lg:flex-row gap-20 items-center">
+          <div className="flex flex-col lg:flex-row gap-10 lg:gap-20 items-center">
             <motion.div
               {...fadeIn}
-              className="lg:w-1/2"
+              className="w-full lg:w-1/2"
             >
               <div className="relative">
                 <div className="aspect-[4/5] overflow-hidden shadow-2xl">
                   <img
-                    src="/images/attached-interior.png"
+                    src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2670"
                     alt="Luxury interior construction in progress"
                     className="w-full h-full object-cover grayscale"
                   />
@@ -85,7 +85,7 @@ const AboutPage: React.FC = () => {
             <motion.div
               {...fadeIn}
               transition={{ ...fadeIn.transition, delay: 0.2 }}
-              className="lg:w-1/2 space-y-8"
+              className="w-full lg:w-1/2 space-y-8"
             >
               <h2 className="text-4xl md:text-5xl font-manrope font-medium text-zinc-900 leading-tight">
                 Rooted in precision, <br />driven by vision.
@@ -141,7 +141,7 @@ const AboutPage: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="p-10 bg-white border border-zinc-100 hover:bg-zinc-50 transition-all duration-500"
+                className="p-6 md:p-10 bg-white border border-zinc-100 hover:bg-zinc-50 transition-all duration-500"
               >
                 <div className="w-14 h-14 bg-zinc-100 flex items-center justify-center mb-8">
                   {value.icon}

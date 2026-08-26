@@ -1,133 +1,83 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Shield, Award, Users } from 'lucide-react';
+import { STATS } from '../constants';
 
 const About: React.FC = () => {
-  const stats = [
-    { label: 'Years Experience', value: '11+', icon: Award },
-    { label: 'Projects Completed', value: '200+', icon: Shield },
-    { label: 'Happy Clients', value: '100%', icon: Users },
-  ];
-
-  const partners = [
-    'Premium Quartz', 'Kohler', 'Sherwin Williams', 'Delta Faucet', 'Floor & Decor', 
-    'Home Depot Pro', 'Moen', 'Sub-Zero', 'Wolf'
+  const galleryImages = [
+    '/images/vlp-kitchen/kitchen-1.jpg',
+    '/images/vlp-kitchen/kitchen-3.jpg',
+    '/images/vlp-bathroom/bath-1.jpg',
+    '/images/vlp-staircase/stairs-1.jpg',
+    '/images/vlp-mudcloset/mudcloset-1.jpg',
+    '/images/vlp-after/after-exterior.jpg',
   ];
 
   return (
-    <section id="about" className="py-24 bg-zinc-50 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          
-          {/* Content */}
-          <div className="relative z-10">
-            <motion.span
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-6 block"
-            >
-              Our Story
-            </motion.span>
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-manrope font-medium text-zinc-900 leading-tight mb-8"
-            >
-              Elevating Florida Homes Through <span className="text-zinc-400">Masterful Renovation</span>
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="text-zinc-500 font-manrope text-lg leading-relaxed mb-10"
-            >
-              For over a decade, Deluxe Renovations has been the premier choice for homeowners seeking uncompromising quality and sophisticated design. Based in Saint Cloud, we bring precision craftsmanship to every corner of Central Florida.
-            </motion.p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-12">
-              {stats.map((stat, i) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2 + i * 0.1 }}
-                  className="flex flex-col"
-                >
-                  <span className="text-3xl font-manrope font-semibold text-zinc-900 mb-1">{stat.value}</span>
-                  <span className="text-xs font-bold uppercase tracking-widest text-zinc-400">{stat.label}</span>
-                </motion.div>
-              ))}
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
-            >
-              <button className="group flex items-center gap-3 px-8 py-4 bg-zinc-900 text-white text-xs font-bold uppercase tracking-widest hover:bg-zinc-700 transition-all">
-                Learn More About Us
-                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-              </button>
-            </motion.div>
+    <section id="about" className="bg-white overflow-hidden py-16 md:py-24">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start mb-16 md:mb-24">
+          <div className="w-full lg:w-1/3">
+            <span className="inline-block px-4 py-2 rounded-full bg-zinc-900 text-white text-xs font-manrope font-bold uppercase tracking-wider mb-6">
+              About us
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-manrope font-medium text-zinc-900 leading-tight">
+              Elite Multifaceted Builders
+            </h2>
           </div>
-
-          {/* Visual Stack */}
-          <div className="relative">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl z-20"
-            >
-              <img
-                src="/images/vlp-after/after-exterior.jpg"
-                alt="Our Workmanship"
-                className="w-full h-full object-cover"
-              />
-            </motion.div>
-            
-            {/* Background Accent */}
-            <div className="absolute -top-10 -right-10 w-64 h-64 bg-zinc-200 rounded-full blur-3xl opacity-50 z-0" />
-            <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-zinc-300 rounded-full blur-3xl opacity-50 z-0" />
-            
-            {/* Floating Badge */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="absolute -bottom-6 -right-6 bg-white p-8 rounded-2xl shadow-xl z-30 hidden sm:block"
-            >
-              <div className="flex flex-col items-center">
-                <span className="text-4xl font-bold text-zinc-900 mb-1">100%</span>
-                <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Satisfaction</span>
-              </div>
-            </motion.div>
+          <div className="w-full lg:w-2/3">
+            <p className="text-lg sm:text-xl md:text-2xl font-manrope text-zinc-600 leading-relaxed">
+              <span className="block mb-4">With over 11 years of experience building luxury multi-family communities, commercial spaces, custom homes, ADUs, and high-end renovations, we deliver results that combine quality, efficiency, and attention to detail.</span>
+              <span className="block">At <span className="font-bold text-zinc-900">Deluxe</span>, every project is built to elevate the space and exceed expectations. We specialize in residential and commercial remodeling, flooring, drywall, and custom renovations.</span>
+            </p>
           </div>
         </div>
+      </div>
 
-        {/* Logo Ticker */}
-        <div className="mt-32 pt-16 border-t border-zinc-200">
-          <p className="text-center text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-400 mb-12">
-            Trusted by Industry Leaders & Premium Brands
-          </p>
-          <div className="relative flex overflow-x-hidden">
-            <div className="flex animate-marquee whitespace-nowrap gap-12 items-center">
-              {[...partners, ...partners].map((partner, i) => (
-                <span
-                  key={i}
-                  className="text-2xl font-manrope font-bold text-zinc-300 hover:text-zinc-900 transition-colors cursor-default select-none"
-                >
-                  {partner}
-                </span>
+      {/* Scrolling gallery */}
+      <div className="relative overflow-hidden mb-16 md:mb-24">
+        <div className="flex">
+          <motion.div
+            className="flex"
+            animate={{ x: ['0%', '-50%'] }}
+            transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
+          >
+            <div className="flex gap-3 md:gap-4 pr-3 md:pr-4">
+              {galleryImages.map((src, i) => (
+                <div key={`da-${i}`} className="w-[160px] md:w-[240px] aspect-[4/3] flex-shrink-0 overflow-hidden">
+                  <img src={src} alt="" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" />
+                </div>
               ))}
             </div>
-          </div>
+            <div className="flex gap-3 md:gap-4 pr-3 md:pr-4">
+              {galleryImages.map((src, i) => (
+                <div key={`db-${i}`} className="w-[160px] md:w-[240px] aspect-[4/3] flex-shrink-0 overflow-hidden">
+                  <img src={src} alt="" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" />
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+        <div className="absolute inset-y-0 left-0 w-12 md:w-24 bg-gradient-to-r from-white to-transparent pointer-events-none z-10" />
+        <div className="absolute inset-y-0 right-0 w-12 md:w-24 bg-gradient-to-l from-white to-transparent pointer-events-none z-10" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-5 sm:px-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 text-center lg:text-left">
+          {STATS.map((stat, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="flex flex-col items-center lg:items-start"
+            >
+              <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-manrope font-light text-zinc-900 mb-3 md:mb-4">{stat.value}</span>
+              <h4 className="text-base md:text-xl font-manrope font-semibold text-zinc-900 mb-2">{stat.label}</h4>
+              <p className="text-zinc-500 font-manrope text-xs md:text-sm leading-snug">{stat.description}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

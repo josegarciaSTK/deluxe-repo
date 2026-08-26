@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #ffffff;
+  color: #101014;
+}
+
+.font-manrope { font-family: 'Manrope', sans-serif; }
+.font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+.font-montserrat { font-family: 'Montserrat', sans-serif; }
+
+html, body { overflow-x: hidden; }
+*, *::before, *::after { box-sizing: border-box; }
+input, textarea, select { font-size: 16px; }
